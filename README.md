@@ -5,6 +5,14 @@ Provides the let! method to minitest spec, similar to the RSpec method of the sa
 
 ## Install
 
-    gem install minitest-bang
-    
+```shell
+gem install minitest-bang
+```
+or add the following line to Gemfile:
+
+```ruby
+gem 'minitest-bang'
+```
+and run `bundle install` from your shell.
+
 ## Usage
