@@ -1,6 +1,8 @@
+require 'set'
+
 module Minitest::Spec::DSL
   def bangs
-    @bangs ||= []
+    @bangs ||= Set.new
   end
 
   def let!(name, &block)
