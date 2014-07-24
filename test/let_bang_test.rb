@@ -1,27 +1,5 @@
 require 'minitest/autorun'
-
-module Minitest::Spec::DSL
-  def bangs
-    @bangs ||= []
-  end
-
-  def let!(name, &block)
-    let(name, &block)
-    bangs << name
-  end
-end
-
-module LetBang
-  def setup
-    self.class.bangs.each do |bang|
-      send(bang)
-    end
-  end
-end
-
-class MiniTest::Test
-  include LetBang
-end
+require_relative '../lib/let_bang'
 
 describe Minitest::Spec, :let! do
 
