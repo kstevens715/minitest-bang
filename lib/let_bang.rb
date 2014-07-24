@@ -12,14 +12,21 @@ module Minitest::Spec::DSL
 end
 
 module LetBang
-  def setup
+  def before_setup
+    super
     self.class.bangs.each do |bang|
       send(bang)
     end
   end
 end
 
-class MiniTest::Test
-  include LetBang
+if defined?(MiniTest::Test)
+  class MiniTest::Test
+    include LetBang
+  end
 end
-
+if defined?(MiniTest::Unit::TestCase)
+  class MiniTest::Unit::TestCase
+    include LetBang
+  end
+end
