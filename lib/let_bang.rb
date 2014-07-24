@@ -3,6 +3,8 @@ require 'set'
 module Minitest::Spec::DSL
   def bangs
     @bangs ||= Set.new
+    @bangs = @bangs + self.superclass.bangs if defined? self.superclass.bangs
+    @bangs
   end
 
   def let!(name, &block)
