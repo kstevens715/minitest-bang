@@ -16,21 +16,17 @@ describe Minitest::Spec, :let! do
       $let_count
     end
 
-    before do
+    it "is evaluated before it's called" do
       _count.must_equal 1
     end
 
-    it "is evaluated before it's called" do
-      _count.must_equal 2
-    end
-
     it "is evaluated once per example" do
-      _count.must_equal 3
+      _count.must_equal 2
 
-      count.must_equal 3
-      count.must_equal 3
+      count.must_equal 2
+      count.must_equal 2
 
-      _count.must_equal 3
+      _count.must_equal 2
     end
 
     let!(:dependent) { dependency + 1 }
@@ -38,6 +34,14 @@ describe Minitest::Spec, :let! do
 
     it "resolves dependencies regardless of order" do
       dependent.must_equal 3
+    end
+  end
+
+  describe 'let! is evaluated before before blocks' do
+    let!(:available) { @available = true }
+
+    before do
+      @available.must_equal true
     end
   end
 
