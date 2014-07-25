@@ -21,6 +21,9 @@ Then in your test helper, after requiring minitest/autorun:
 require 'minitest/bang'
 ```
 
+## Supported Minitest versions
+Currently, minitest-bang supports minitest 4.7.5 through 5.4.0
+
 ## Usage
 
 You use it just like you would `let`, except the ones you define with `let!` get called automatically right before your before block gets executed:
