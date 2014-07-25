@@ -1,4 +1,5 @@
 require 'set'
+require 'minitest/spec'
 
 module Minitest::Spec::DSL
   def bangs
@@ -13,7 +14,7 @@ module Minitest::Spec::DSL
   end
 end
 
-module LetBang
+module Bang
   def before_setup
     super
     self.class.bangs.each do |bang|
@@ -24,11 +25,11 @@ end
 
 if defined?(MiniTest::Test)
   class MiniTest::Test
-    include LetBang
+    include Bang
   end
 end
 if defined?(MiniTest::Unit::TestCase)
   class MiniTest::Unit::TestCase
-    include LetBang
+    include Bang
   end
 end
