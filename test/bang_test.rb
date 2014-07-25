@@ -16,17 +16,21 @@ describe Minitest::Spec, :let! do
       $let_count
     end
 
-    it "is evaluated before it's called" do
+    before do
       _count.must_equal 1
     end
 
+    it "is evaluated before it's called" do
+      _count.must_equal 2
+    end
+
     it "is evaluated once per example" do
-      _count.must_equal 2
+      _count.must_equal 3
 
-      count.must_equal 2
-      count.must_equal 2
+      count.must_equal 3
+      count.must_equal 3
 
-      _count.must_equal 2
+      _count.must_equal 3
     end
 
     let!(:dependent) { dependency + 1 }
