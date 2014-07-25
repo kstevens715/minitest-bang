@@ -11,9 +11,15 @@ gem install minitest-bang
 or add the following line to Gemfile:
 
 ```ruby
-gem 'minitest-bang'
+gem 'minitest-bang', require: false
 ```
 and run `bundle install` from your shell.
+
+Then in your test helper, after requiring minitest/autorun:
+
+```ruby
+require 'minitest/bang'
+```
 
 ## Usage
 
@@ -22,11 +28,11 @@ You use it just like you would `let`, except the ones you define with `let!` get
 ```ruby
   describe User do
     let!(:user1) { create :user }
-    
+
     before do
       User.count.must_equal 1
     end
-    
+
     it "has one user without referencing user1" do
       User.count.must_equal 1
     end
