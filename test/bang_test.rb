@@ -3,9 +3,10 @@ require_relative '../lib/minitest/bang'
 
 describe Minitest::Spec, :let! do
 
-  i_suck_and_my_tests_are_order_dependent!
-
   describe "basic case" do
+
+    i_suck_and_my_tests_are_order_dependent!
+
     def _count
       $let_count ||= 0
     end
@@ -53,19 +54,25 @@ describe Minitest::Spec, :let! do
       @last.must_equal 4
       last.must_equal 4
     end
+
+    describe 'nested blocks' do
+      let!(:last) { @last ||= 0; @last += 99 }
+      it "overrides top level let!" do
+        @last.must_equal 99
+      end
+    end
   end
 
   describe 'nested describes' do
-    let!(:high_level) { @high_level = 1 }
-    let!(:higher_level) { @higher_level = 2 }
+    let!(:higher_level) { @higher_level = true }
 
     describe 'nested' do
       it "gets higher level lets!" do
-        @high_level.must_equal 1
+        @higher_level.must_equal true
       end
       describe 'even deeper' do
         it "gets higher level lets!" do
-          @higher_level.must_equal 2
+          @higher_level.must_equal true
         end
       end
     end
