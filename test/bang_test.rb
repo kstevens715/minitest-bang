@@ -1,8 +1,8 @@
-require 'coveralls'
+require "coveralls"
 Coveralls.wear!
 
-require 'minitest/autorun'
-require_relative '../lib/minitest/bang'
+require "minitest/autorun"
+require_relative "../lib/minitest/bang"
 
 describe Minitest::Spec, :let! do
 
@@ -41,7 +41,7 @@ describe Minitest::Spec, :let! do
     end
   end
 
-  describe 'let! is evaluated before before blocks' do
+  describe "let! is evaluated before before blocks" do
     let!(:available) { @available = true }
 
     before do
@@ -49,7 +49,7 @@ describe Minitest::Spec, :let! do
     end
   end
 
-  describe 'multiple definitions' do
+  describe "multiple definitions" do
     let!(:last) { @last ||= 0; @last += 1 }
     let!(:last) { @last ||= 0; @last += 4 }
 
@@ -58,7 +58,7 @@ describe Minitest::Spec, :let! do
       last.must_equal 4
     end
 
-    describe 'nested blocks' do
+    describe "nested blocks" do
       let!(:last) { @last ||= 0; @last += 99 }
       it "overrides top level let!" do
         @last.must_equal 99
@@ -66,14 +66,23 @@ describe Minitest::Spec, :let! do
     end
   end
 
-  describe 'nested describes' do
+  describe "multiple (mixed) definitions" do
+    let!(:mixed) { "with bang" }
+    let(:mixed) { 'without bang' }
+
+    it "can be overridden by non-bang lets" do
+      mixed.must_equal "without bang"
+    end
+  end
+
+  describe "nested describes" do
     let!(:higher_level) { @higher_level = true }
 
-    describe 'nested' do
+    describe "nested" do
       it "gets higher level lets!" do
         @higher_level.must_equal true
       end
-      describe 'even deeper' do
+      describe "even deeper" do
         it "gets higher level lets!" do
           @higher_level.must_equal true
         end
