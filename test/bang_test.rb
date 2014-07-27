@@ -1,3 +1,4 @@
+
 require 'minitest/autorun'
 require_relative '../lib/minitest/bang'
 

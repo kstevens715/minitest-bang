@@ -1,0 +1,18 @@
+PATH
+  remote: .
+  specs:
+    minitest-bang (0.1.1)
+      minitest (>= 4.7.5, <= 5.4.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.4.0)
+    rake (10.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest-bang!
+  rake
