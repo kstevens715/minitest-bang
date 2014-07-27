@@ -3,5 +3,5 @@ rvm:
   - 1.9.3
   - 2.0.0
 gemfile:
-  - gemfiles/minitest4.7.5.gemfile
-  - gemfiles/minitest5.4.0.gemfile
+  - gemfiles/Gemfile.minitest-4.7.5
+  - gemfiles/Gemfile.minitest-5.4.0
