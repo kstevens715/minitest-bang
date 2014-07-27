@@ -28,7 +28,7 @@ Currently, minitest-bang supports minitest 4.7.5 through 5.4.0
 
 ## Usage
 
-You use it just like you would `let`, except the ones you define with `let!` get called automatically right before your before block gets executed:
+You use it just like you would `let`, except the ones you define with `let!` are automatically invoked right before your before block gets executed:
 
 ```ruby
   describe User do
