@@ -1,4 +1,4 @@
-# minitest-bang [![Build Status](https://travis-ci.org/kstevens715/minitest-bang.svg?branch=master)](https://travis-ci.org/kstevens715/minitest-bang)
+# minitest-bang [![Build Status](https://travis-ci.org/kstevens715/minitest-bang.svg?branch=master)](https://travis-ci.org/kstevens715/minitest-bang) [![Code Climate](https://codeclimate.com/github/kstevens715/minitest-bang.png)](https://codeclimate.com/github/kstevens715/minitest-bang)
 
 Provides the let! method to minitest spec, similar to the RSpec method of the same name.
 
