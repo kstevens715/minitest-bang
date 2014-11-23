@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = "minitest-bang"
-  s.version = "0.1.2"
-  s.date = "2014-07-24"
+  s.version = "0.1.3"
+  s.date = "2014-11-23"
   s.summary = "Provides let! for minitest spec, much like RSpec's."
   s.description = "Lets you use let! to immediately execute lets in minitest spec."
   s.authors = ["Kyle Stevens", "Ben Kanouse", "Rob Jones"]
