@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
   s.name = "minitest-bang"
-  s.version = "0.1.3"
+  s.version = "1.0.0"
   s.date = "2014-11-23"
   s.summary = "Provides let! for minitest spec, much like RSpec's."
   s.description = "Lets you use let! to immediately execute lets in minitest spec."
   s.authors = ["Kyle Stevens", "Ben Kanouse", "Rob Jones"]
   s.email = "kstevens715@gmail.com"
-  s.files = ["lib/minitest/bang.rb"]
+  s.files = ["lib/minitest/bang.rb", "lib/minitest/dsl.rb"]
   s.homepage = "https://github.com/kstevens715/minitest-bang"
   s.license = "MIT"
   s.add_development_dependency "rake"
