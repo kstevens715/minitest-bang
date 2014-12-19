@@ -7,3 +7,4 @@ gemfile:
   - gemfiles/Gemfile.minitest-4.7.5
   - gemfiles/Gemfile.minitest-5.4.0
   - gemfiles/Gemfile.minitest-5.4.3
+  - gemfiles/Gemfile.minitest-5.5.0

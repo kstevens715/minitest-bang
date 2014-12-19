@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    minitest-bang (0.1.1)
-      minitest (>= 4.7.5, <= 5.4.3)
+    minitest-bang (1.0.1)
+      minitest (>= 4.7.5, <= 5.6)
 
 GEM
   remote: https://rubygems.org/
@@ -15,7 +15,7 @@ GEM
       thor
     docile (1.1.5)
     mime-types (2.3)
-    minitest (5.4.3)
+    minitest (5.5.0)
     multi_json (1.10.1)
     netrc (0.7.7)
     rake (10.3.2)
@@ -36,6 +36,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  coveralls
+  coveralls (>= 0.7.0)
   minitest-bang!
-  rake
+  rake (>= 10.0.0)
