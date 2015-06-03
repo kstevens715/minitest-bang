@@ -89,4 +89,49 @@ describe Minitest::Spec, :let! do
       end
     end
   end
+
+  describe "nested describes with before blocks" do
+    let!(:top_let) { append_symbol(:top_let) }
+
+    before do
+      append_symbol(:top_before)
+    end
+
+    specify { @order.must_equal [:top_let, :top_before] }
+
+    describe "nested" do
+      let!(:nested_let) { append_symbol(:nested_let) }
+
+      before do
+        append_symbol(:nested_before)
+      end
+
+      specify { @order.must_equal [:top_let, :top_before, :nested_let, :nested_before] }
+    end
+  end
+
+  describe "before then let" do
+    before do
+      append_symbol(:before)
+    end
+
+    let!(:let) { append_symbol(:let) }
+
+    specify { @order.must_equal [:before, :let] }
+  end
+
+  describe "let then before" do
+    let!(:let) { append_symbol(:let) }
+
+    before do
+      append_symbol(:before)
+    end
+
+    specify { @order.must_equal [:let, :before] }
+  end
+
+  def append_symbol(symbol)
+    @order ||= []
+    @order << symbol
+  end
 end
