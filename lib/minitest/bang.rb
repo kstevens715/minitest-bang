@@ -5,9 +5,11 @@ module Minitest
   module Bang
     def before_setup
       super
+      return if self.class.before_ran
       self.class.bangs.each do |bang|
         send(bang)
       end
+
     end
   end
 
