@@ -130,6 +130,29 @@ describe Minitest::Spec, :let! do
     specify { @order.must_equal [:let, :before] }
   end
 
+  describe "lots of random let and before blocks" do
+    let!(:let1) { append_symbol(:let1) }
+    let!(:let2) { append_symbol(:let2) }
+
+    before do
+      append_symbol(:before1)
+    end
+
+    let!(:let3) { append_symbol(:let3) }
+
+    describe "inner" do
+      let!(:let4) { append_symbol(:let4) }
+
+      before do
+        append_symbol(:before2)
+      end
+
+      let!(:let5) { append_symbol(:let5) }
+
+      specify { @order.must_equal [:let1, :let2, :before1, :let3, :let4, :before2, :let5] }
+    end
+  end
+
   def append_symbol(symbol)
     @order ||= []
     @order << symbol
