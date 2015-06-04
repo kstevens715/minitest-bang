@@ -4,13 +4,20 @@ require 'minitest/spec'
 module Minitest
   module Spec::DSL
 
-    def bangs
-      @bangs ||= Set.new
-    end
-
     def let!(name, &block)
       let(name, &block)
       bangs << name
+    end
+
+    def all_bangs
+      return Set.new if @before_ran
+      bangs + bangs_from_parent_scope
+    end
+
+    private
+
+    def bangs
+      @bangs ||= Set.new
     end
 
     def before_with_bangs(_type=nil, &block)
@@ -31,11 +38,6 @@ module Minitest
 
     alias_method :before_without_bangs, :before
     alias_method :before, :before_with_bangs
-
-    def all_bangs
-      return Set.new if @before_ran
-      bangs + bangs_from_parent_scope
-    end
 
     def bangs_from_parent_scope
       return Set.new unless defined? self.superclass.all_bangs
