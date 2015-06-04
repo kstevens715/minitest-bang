@@ -5,9 +5,7 @@ module Minitest
   module Bang
     def before_setup
       super
-      self.class.bangs.each do |bang|
-        send(bang)
-      end
+      self.class.all_bangs.each(&method(:send))
     end
   end
 

@@ -89,4 +89,72 @@ describe Minitest::Spec, :let! do
       end
     end
   end
+
+  describe "nested describes with before blocks" do
+    let!(:top_let) { append_symbol(:top_let) }
+
+    before do
+      append_symbol(:top_before)
+    end
+
+    specify { @order.must_equal [:top_let, :top_before] }
+
+    describe "nested" do
+      let!(:nested_let) { append_symbol(:nested_let) }
+
+      before do
+        append_symbol(:nested_before)
+      end
+
+      specify { @order.must_equal [:top_let, :top_before, :nested_let, :nested_before] }
+    end
+  end
+
+  describe "before then let" do
+    before do
+      append_symbol(:before)
+    end
+
+    let!(:let) { append_symbol(:let) }
+
+    specify { @order.must_equal [:before, :let] }
+  end
+
+  describe "let then before" do
+    let!(:let) { append_symbol(:let) }
+
+    before do
+      append_symbol(:before)
+    end
+
+    specify { @order.must_equal [:let, :before] }
+  end
+
+  describe "lots of random let and before blocks" do
+    let!(:let1) { append_symbol(:let1) }
+    let!(:let2) { append_symbol(:let2) }
+
+    before do
+      append_symbol(:before1)
+    end
+
+    let!(:let3) { append_symbol(:let3) }
+
+    describe "inner" do
+      let!(:let4) { append_symbol(:let4) }
+
+      before do
+        append_symbol(:before2)
+      end
+
+      let!(:let5) { append_symbol(:let5) }
+
+      specify { @order.must_equal [:let1, :let2, :before1, :let3, :let4, :before2, :let5] }
+    end
+  end
+
+  def append_symbol(symbol)
+    @order ||= []
+    @order << symbol
+  end
 end
