@@ -5,7 +5,12 @@ module Minitest
   module Bang
     def before_setup
       super
-      self.class.all_bangs.each(&method(:send))
+      self.class.bangs_from_parent_scope.each(&method(:send))
+    end
+
+    def after_setup
+      super
+      self.class.bangs.each(&method(:send))
     end
   end
 

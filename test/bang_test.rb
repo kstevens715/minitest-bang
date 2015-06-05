@@ -153,6 +153,18 @@ describe Minitest::Spec, :let! do
     end
   end
 
+  describe 'before block with let in nested block' do
+    before do
+      append_symbol(:before)
+    end
+
+    describe 'inner 2' do
+      let!(:let) { append_symbol(:let) }
+
+      specify { @order.must_equal [:before, :let] }
+    end
+  end
+
   def append_symbol(symbol)
     @order ||= []
     @order << symbol
