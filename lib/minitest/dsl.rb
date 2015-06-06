@@ -27,8 +27,7 @@ module Minitest
 
     def before_with_bangs(_type=nil, &block)
       @before_ran = true
-
-      before_bangs = Set.new(bangs)
+      before_bangs = bangs + bangs_from_parent_scope
       bangs.clear
       after_bangs = bangs
 

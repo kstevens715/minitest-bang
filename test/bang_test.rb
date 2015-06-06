@@ -165,6 +165,19 @@ describe Minitest::Spec, :let! do
     end
   end
 
+  describe 'outer' do
+    let!(:let) { append_symbol(:let) }
+
+    describe 'inner1' do
+
+      before { append_symbol(:before) }
+
+      describe 'inner2' do
+        specify { @order.must_equal [:let, :before] }
+      end
+    end
+  end
+
   def append_symbol(symbol)
     @order ||= []
     @order << symbol
